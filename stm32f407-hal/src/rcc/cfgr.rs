@@ -8,12 +8,12 @@ use crate::rcc::Clocks;
 const HSI: u32 = 16_000_000;    // Hz
 
 pub struct CFGR {
-    hse: Option<u32>,
-    hclk: Option<u32>,
-    pclk1: Option<u32>,
-    pclk2: Option<u32>,
-    sysclk: Option<u32>,
-    pll48clk: bool,
+    pub(in crate) hse: Option<u32>,
+    pub(in crate) hclk: Option<u32>,
+    pub(in crate) pclk1: Option<u32>,
+    pub(in crate) pclk2: Option<u32>,
+    pub(in crate) sysclk: Option<u32>,
+    pub(in crate) pll48clk: bool,
 }
 
 impl CFGR {

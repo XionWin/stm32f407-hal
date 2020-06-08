@@ -10,15 +10,9 @@ edition = "2018"
 cortex-m = "*"
 cortex-m-rt = "*"
 panic-halt = "*"
-nb = "*"
 
 stm32f407-hal = { path = "../stm32f407-hal" }
-
-[dependencies.embedded-hal]
-features = ["unproven"]
-version = "*"
 
 [dependencies.stm32f4]
 features = ["stm32f407", "rt"]
 version = "*"
-
