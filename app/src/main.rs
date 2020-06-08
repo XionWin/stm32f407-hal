@@ -5,13 +5,11 @@ extern crate cortex_m;
 extern crate cortex_m_rt;
 extern crate panic_halt;
 extern crate stm32f4;
-extern crate stm32f407_hal as stm32;
+extern crate stm32f407_hal as hal;
 
 use cortex_m_rt::entry;
 
-pub use stm32::prelude::*;
-pub use stm32::rcc::*;
-pub use stm32::gpio::*;
+pub use hal::{gpio::*, prelude::*, rcc::*};
 
 #[entry]
 fn main() -> ! {
@@ -26,8 +24,8 @@ fn main() -> ! {
     let delay = 5000000u32;
     loop {
         led.set_low().unwrap();
-        cortex_m::asm::delay(delay); 
+        cortex_m::asm::delay(delay);
         led.set_high().unwrap();
-        cortex_m::asm::delay(delay); 
+        cortex_m::asm::delay(delay);
     }
 }
