@@ -4,7 +4,7 @@
 extern crate cortex_m;
 extern crate cortex_m_rt;
 extern crate panic_halt;
-extern crate stm32f4;
+extern crate stm32f4 as stm32;
 extern crate stm32f407_hal as hal;
 
 use cortex_m_rt::entry;
@@ -13,7 +13,7 @@ pub use hal::{gpio::*, prelude::*, rcc::*};
 
 #[entry]
 fn main() -> ! {
-    let dp = stm32f4::stm32f407::Peripherals::take().unwrap();
+    let dp = stm32::stm32f407::Peripherals::take().unwrap();
 
     let _rcc = dp.RCC.constrain();
     let gpioc = dp.GPIOC.split();
