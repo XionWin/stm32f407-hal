@@ -8,17 +8,7 @@ edition = "2018"
 
 [dependencies]
 cortex-m = "*"
-# embedded-hal = "*"
-
-# stm32f407-rs = { path = "../stm32f407-rs" }
-
-[dependencies.embedded-hal]
-features = ["unproven"]
-version = "*"
-
-[dependencies.stm32f4]
-features = ["stm32f407", "rt"]
-version = "*"
+nb = "*"
 
 
 [dependencies.cast]
@@ -27,4 +17,12 @@ default-features = false
 
 [dependencies.void]
 default-features = false
+version = "*"
+
+[dependencies.embedded-hal]
+features = ["unproven"]
+version = "*"
+
+[dependencies.stm32f4]
+features = ["stm32f407", "rt"]
 version = "*"

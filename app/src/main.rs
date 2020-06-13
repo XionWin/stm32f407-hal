@@ -9,23 +9,29 @@ extern crate stm32f407_hal as hal;
 
 use cortex_m_rt::entry;
 
-pub use hal::{gpio::*, prelude::*, rcc::*};
+pub use hal::{gpio::*, prelude::*, rcc::*, time::*, timer::*, delay::*};
 
 #[entry]
 fn main() -> ! {
     let dp = stm32::stm32f407::Peripherals::take().unwrap();
+    let cp = cortex_m::peripheral::Peripherals::take().unwrap();
 
-    let _rcc = dp.RCC.constrain();
+    let rcc = dp.RCC.constrain();
     let gpioc = dp.GPIOC.split();
+
+    let clocks = rcc.cfgr.sysclk(168.mhz()).freeze();
+
+    // Create a timer based on SysTick
+
+    let mut delay = Delay::new(cp.SYST, clocks);
 
     let mut led = gpioc.pc13.into_push_pull_output();
     led.set_high().unwrap();
 
-    let delay = 5000000u32;
     loop {
         led.set_low().unwrap();
-        cortex_m::asm::delay(delay);
+        delay.delay_ms(1000_u32);
         led.set_high().unwrap();
-        cortex_m::asm::delay(delay);
+        delay.delay_ms(1000_u32);
     }
 }

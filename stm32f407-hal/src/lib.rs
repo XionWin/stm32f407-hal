@@ -3,6 +3,7 @@
 
 extern crate cast;
 extern crate cortex_m;
+extern crate nb;
 extern crate void;
 extern crate stm32f4;
 
@@ -13,3 +14,4 @@ pub mod rcc;
 pub mod prelude;
 pub mod gpio;
 pub mod timer;
+pub mod delay;
