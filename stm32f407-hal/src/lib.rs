@@ -15,3 +15,4 @@ pub mod prelude;
 pub mod gpio;
 pub mod timer;
 pub mod delay;
+pub mod serial;
